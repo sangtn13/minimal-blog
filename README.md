@@ -174,7 +174,7 @@ App runs at `http://localhost:5000`.
 
 MIT
 
-## 👨‍💻 Author
+## Author
 
 **SangTran13**
 - GitHub: [@SangTran13](https://github.com/SangTran13)
