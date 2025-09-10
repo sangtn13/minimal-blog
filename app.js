@@ -67,6 +67,7 @@ app.set("view engine", "ejs");
 
 // Make isActiveRoute available in all views
 app.locals.isActiveRoute = isActiveRoute;
+app.use((req, res, next) => { res.locals.isActiveRoute = isActiveRoute; next(); });
 
 // Routes
 app.use("/", mainRoutes);

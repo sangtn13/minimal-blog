@@ -1,2 +1,39 @@
+# dependencies
 node_modules/
+
+# env & secrets (đừng commit)
 .env
+.env.*
+!.env.example
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# build/output/cache
+dist/
+build/
+coverage/
+.tmp/
+.temp/
+.cache/
+.pnpm-store/
+
+# Docker/compose local overrides
+docker-compose.override.yml
+
+# possible local data
+mongo_data/
+data/
+dump/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,12 @@
+services:
+  app:
+    image: public.ecr.aws/u9a7t5u9/minimal-blog:prod001
+    container_name: minimal-blog
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGODB_URI=${MONGODB_URI}
+    ports:
+      - "80:5000"
+    restart: unless-stopped

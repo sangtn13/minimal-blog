@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    container_name: minimal-blog
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGODB_URI=mongodb+srv://${MONGO_APP_USER}:${MONGO_APP_PASSWORD}@cluster0.wztsjyj.mongodb.net/${MONGODB_DATABASE}?retryWrites=true&w=majority
+    ports:
+      - "5000:5000"
+    restart: unless-stopped

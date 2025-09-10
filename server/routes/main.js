@@ -68,7 +68,7 @@ router.post("/search", async (req, res) => {
       ],
     });
 
-    res.render("search", { locals, data, searchTerm });
+    res.render("search", { locals, data, searchTerm, currentRoute: "/search" });
   } catch (error) {
     console.error("Error searching posts:", error);
   }
