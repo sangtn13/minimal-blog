@@ -1,6 +1,6 @@
-# Minimal Blog (Node.js + Express + EJS + MongoDB)
+# Minimal Blog (Node.js + Express + EJS + MongoDB Atlas)
 
-A minimal-yet-complete blog application featuring a public blog, an admin area with JWT authentication, server-side rendering with EJS, search, pagination, toast notifications, and MongoDB persistence.
+Minimal Blog with EJS server-side rendering, JWT auth, and MongoDB Atlas. The repo includes instructions for local development and running via Docker or Docker Compose.
 
 ## Features
 
@@ -62,12 +62,12 @@ A minimal-yet-complete blog application featuring a public blog, an admin area w
    ├─ about.ejs, contact.ejs
 ```
 
-## Getting Started
+## Getting Started (Local)
 
 ### 1) Requirements
 
 - Node.js 18+
-- MongoDB connection string (MongoDB Atlas or local)
+- MongoDB Atlas connection string
 
 ### 2) Install dependencies
 
@@ -81,10 +81,8 @@ Create a `.env` file at the project root:
 
 ```env
 # Environment Variables
-MONGODB_URI=""
-
-JWT_SECRET=""
-
+MONGODB_URI="mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority"
+JWT_SECRET="<strong_random_secret>"
 PORT=5000
 NODE_ENV=development
 ```
@@ -165,6 +163,51 @@ App runs at `http://localhost:5000`.
 - If nodemon loops due to file changes, ensure large folders (e.g., `.git`, `node_modules`) are ignored by default and environment files are correctly loaded.
 - For production, set `NODE_ENV=production` and ensure a strong `JWT_SECRET`.
 
+---
+
+## Docker
+
+### Build a local image
+```bash
+docker build -t minimal-blog:local .
+docker run -d --name minimal-blog -p 5000:5000 \
+  -e NODE_ENV=production \
+  -e PORT=5000 \
+  -e JWT_SECRET=your_secret \
+  -e MONGODB_URI="mongodb+srv://user:pass@cluster/db?retryWrites=true&w=majority" \
+  minimal-blog:local
+```
+
+### Docker Compose (Atlas)
+Minimal `docker-compose.yml`:
+```yaml
+services:
+  app:
+    build: .
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - JWT_SECRET=${JWT_SECRET}
+      - MONGODB_URI=${MONGODB_URI}
+    ports:
+      - "80:5000"
+    restart: unless-stopped
+```
+
+Run:
+```bash
+docker compose up -d --build
+```
+
+Sample `.env`:
+```env
+PORT=5000
+JWT_SECRET=<secret>
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majority
+```
+
+---
+
 ## Scripts
 
 - `npm run dev` — start with nodemon
@@ -176,9 +219,7 @@ MIT
 
 ## Author
 
-**SangTran13**
-- GitHub: [@SangTran13](https://github.com/SangTran13)
-- Repository: [minimal-blog](https://github.com/SangTran13/minimal-blog)
+**SangTran13** — GitHub: [@SangTran13](https://github.com/SangTran13)
 
 ---
 

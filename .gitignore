@@ -30,6 +30,7 @@ docker-compose.override.yml
 mongo_data/
 data/
 dump/
+mongo-init.sh
 
 # OS / editors
 .DS_Store
