@@ -1,0 +1,6 @@
+<% if (typeof toast !== 'undefined' && toast) { %>
+<div id="toast" class="toast toast--<%= toast.type %>">
+  <span class="toast__msg"><%= toast.message %></span>
+  <button id="toastClose" class="toast__close" aria-label="Close">&times;</button>
+</div>
+<% } %>
