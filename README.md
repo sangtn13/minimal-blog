@@ -219,7 +219,7 @@ MIT
 
 ## Author
 
-**SangTran13** — GitHub: [@SangTran13](https://github.com/SangTran13)
+**sangtn13** — GitHub: [@sangtn13](https://github.com/sangtn13)
 
 ---
 
